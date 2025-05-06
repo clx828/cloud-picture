@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4912534 */
+  src: url('../../components/v-icons/ali-icon/iconfont.woff2?t=1746443789535') format('woff2'),
+       url('iconfont.woff?t=1746443789535') format('woff'),
+       url('iconfont.ttf?t=1746443789535') format('truetype');
+}
+
+.iconfont{
+  font-family: "iconfont", serif !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fenbianshuai:before {
+  content: "\e781";
+}
+
+.icon-shipinqushuiyin:before {
+  content: "\e65c";
+}
+
+.icon-yishu_sumiao-cuxian:before {
+  content: "\e608";
+}
+
+.icon-AIkuotu:before {
+  content: "\e7c7";
+}
+
+.icon-houqishejimeigong:before {
+  content: "\e709";
+}
+
+.icon-shangse:before {
+  content: "\e600";
+}
+
