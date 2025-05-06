@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -94,6 +95,22 @@ public class CacheManage {
 
         // 从二级缓存Redis中删除
         redisTemplate.delete(key);
+    }
+    public void removeCache(String key, boolean isPattern) {
+        if (!isPattern) {
+            caffeineCache.invalidate(key);
+            redisTemplate.delete(key);
+            return;
+        }
+
+        // 1. 删除 Caffeine 中以 key 开头的所有缓存
+        caffeineCache.asMap().keySet().removeIf(k -> k.startsWith(key));
+
+        // 2. 删除 Redis 中以 key 开头的所有缓存（使用 scan 比 keys 安全）
+        Set<String> keys = redisTemplate.keys(key + "*");
+        if (keys != null && !keys.isEmpty()) {
+            redisTemplate.delete(keys);
+        }
     }
 
     /**

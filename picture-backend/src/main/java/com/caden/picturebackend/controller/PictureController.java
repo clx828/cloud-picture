@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import cn.hutool.json.JSONUtil;
 import com.caden.picturebackend.annotation.AuthCheck;
+import com.caden.picturebackend.annotation.CacheEvictCustom;
 import com.caden.picturebackend.api.aliyun.AliYunAiApi;
 import com.caden.picturebackend.api.aliyun.model.CreateOutPaintingTaskResponse;
 import com.caden.picturebackend.api.aliyun.model.GetOutPaintingTaskResponse;
@@ -75,6 +76,7 @@ public class PictureController {
         return ResultUtils.success(pictureVO);
     }
     @PostMapping("/delete")
+    @CacheEvictCustom(keyPrefix = "picture:getPictureVOByPageWithCache:",keySuffix = "*")
     public BaseResponse<Boolean> deletePicture(@RequestBody DeleteRequest deleteRequest,HttpServletRequest request) {
         ThrowUtils.throwIf(deleteRequest==null||deleteRequest.getId()<=0,ErrorCode.PARAMS_ERROR);
         LoginUserVO loginUserVO = userService.getLoginUser(request);
