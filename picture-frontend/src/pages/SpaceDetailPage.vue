@@ -27,7 +27,7 @@
             成员管理
           </a-button>
           <a-button
-            v-if="canManageSpaceUser"
+
             type="primary"
             ghost
             :icon="h(BarChartOutlined)"

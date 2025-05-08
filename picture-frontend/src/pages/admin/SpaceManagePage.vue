@@ -6,6 +6,12 @@
         <a-button type="primary" href="/add_space" target="_blank"
           ><PlusOutlined />创建空间</a-button
         >
+        <a-button type="primary" ghost href="/space_analyze?queryPublic=1" target="_blank"
+        >分析公共图库</a-button
+        >
+        <a-button type="primary" ghost href="/space_analyze?queryAll=1" target="_blank"
+        >分析全部空间</a-button
+        >
       </a-space>
     </a-flex>
     <div style="margin-bottom: 16px" />
@@ -115,6 +121,15 @@
           <div >
             <a-space wrap>
               <a-button type="link" @click="doEdit(record.id)"> 编辑</a-button>
+              <a-button
+                type="primary"
+                ghost
+                :href="`/space_analyze?spaceId=${record.id}`"
+                target="_blank"
+                class="secondary-action-btn"
+              >
+                分析
+              </a-button>
               <a-popconfirm
                 title="您确定要删除这条数据吗？"
                 ok-text="确认"
@@ -207,10 +222,15 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { PlusOutlined, CloudUploadOutlined } from '@ant-design/icons-vue'
+import {
+  PlusOutlined,
+  CloudUploadOutlined,
+  BarChartOutlined,
+  EditOutlined
+} from '@ant-design/icons-vue'
 
 import { cloneDeep } from 'lodash-es'
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, h, onMounted, reactive, ref } from 'vue'
 import { message } from 'ant-design-vue'
 import dayjs from 'dayjs'
 import {

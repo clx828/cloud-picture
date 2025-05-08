@@ -101,7 +101,7 @@ public class SpoaceAnalyzeServiceImpl extends ServiceImpl<SpaceMapper, Space> im
             spaceUsageAnalyzeResponse.setUsedCount(usedCount);
             spaceUsageAnalyzeResponse.setMaxSize(null);
             spaceUsageAnalyzeResponse.setMaxCount(null);
-            spaceUsageAnalyzeResponse.setSizeusageRatio(null);
+            spaceUsageAnalyzeResponse.setSizeUsageRatio(null);
             return spaceUsageAnalyzeResponse;
         }else {
             Long spaceId = spaceUsageAnalyzeRequest.getSpaceId();
@@ -116,8 +116,8 @@ public class SpoaceAnalyzeServiceImpl extends ServiceImpl<SpaceMapper, Space> im
             //使用率
             double sizeusageRatio = NumberUtil.round(space.getTotalSize()*100.0/space.getMaxSize(),2).doubleValue();
             double countusageRatio = NumberUtil.round(space.getTotalCount()*100.0/space.getMaxCount(),2).doubleValue();
-            spaceUsageAnalyzeResponse.setSizeusageRatio(sizeusageRatio);
-            spaceUsageAnalyzeResponse.setCountusageRatio(countusageRatio);
+            spaceUsageAnalyzeResponse.setSizeUsageRatio(sizeusageRatio);
+            spaceUsageAnalyzeResponse.setCountUsageRatio(countusageRatio);
             return spaceUsageAnalyzeResponse;
         }
     }
@@ -249,8 +249,8 @@ public class SpoaceAnalyzeServiceImpl extends ServiceImpl<SpaceMapper, Space> im
 
         // 构造查询条件
         QueryWrapper<Space> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select("id", "spaceName", "userId", "totalSize")
-                .orderByDesc("totalSize")
+        queryWrapper.select("id", "space_name", "user_id", "total_size")
+                .orderByDesc("total_size")
                 .last("limit " + spaceRankAnalyzeRequest.getTopN()); // 取前 N 名
 
         // 查询并封装结果

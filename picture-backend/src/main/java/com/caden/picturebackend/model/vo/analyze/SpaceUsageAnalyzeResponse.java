@@ -12,11 +12,11 @@ public class SpaceUsageAnalyzeResponse implements Serializable {
     //总大小
     private Long maxSize;
     //使用率
-    private Double sizeusageRatio;
+    private Double sizeUsageRatio;
     //当前图片数
     private Long usedCount;
     //最大图片数
     private Long maxCount;
     //使用率
-    private Double countusageRatio;
+    private Double countUsageRatio;
 }

@@ -5,6 +5,7 @@ import com.caden.picturebackend.common.ResultUtils;
 import com.caden.picturebackend.exception.ErrorCode;
 import com.caden.picturebackend.exception.ThrowUtils;
 import com.caden.picturebackend.model.dto.space.analyze.*;
+import com.caden.picturebackend.model.entity.Space;
 import com.caden.picturebackend.model.vo.LoginUserVO;
 import com.caden.picturebackend.model.vo.analyze.*;
 import com.caden.picturebackend.service.SpoaceAnalyzeService;
@@ -57,5 +58,11 @@ public class SpaceAnalyzeController {
         ThrowUtils.throwIf(spaceUserAnalyzeRequest == null, ErrorCode.PARAMS_ERROR, "参数错误");
         LoginUserVO loginUserVO = userService.getLoginUser(request);
         return ResultUtils.success(spoaceAnalyzeService.getSpaceUserAnalyze(spaceUserAnalyzeRequest, loginUserVO));
+    }
+    @PostMapping("/rank")
+    public BaseResponse<List<Space>> getSpaceRankAnalyze(SpaceRankAnalyzeRequest spaceRankAnalyzeRequest, HttpServletRequest request) {
+        ThrowUtils.throwIf(spaceRankAnalyzeRequest == null, ErrorCode.PARAMS_ERROR, "参数错误");
+        LoginUserVO loginUserVO = userService.getLoginUser(request);
+        return ResultUtils.success(spoaceAnalyzeService.getSpaceRankAnalyze(spaceRankAnalyzeRequest, loginUserVO));
     }
 }

@@ -23,9 +23,39 @@ declare namespace API {
     message?: string
   }
 
+  type BaseResponseListSpace_ = {
+    code?: number
+    data?: Space[]
+    message?: string
+  }
+
+  type BaseResponseListSpaceCategoryAnalyzeResponse_ = {
+    code?: number
+    data?: SpaceCategoryAnalyzeResponse[]
+    message?: string
+  }
+
   type BaseResponseListSpaceLevel_ = {
     code?: number
     data?: SpaceLevel[]
+    message?: string
+  }
+
+  type BaseResponseListSpaceSizeAnalyzeResponse_ = {
+    code?: number
+    data?: SpaceSizeAnalyzeResponse[]
+    message?: string
+  }
+
+  type BaseResponseListSpaceTagAnalyzeAResponse_ = {
+    code?: number
+    data?: SpaceTagAnalyzeAResponse[]
+    message?: string
+  }
+
+  type BaseResponseListSpaceUserAnalyzeResponse_ = {
+    code?: number
+    data?: SpaceUserAnalyzeResponse[]
     message?: string
   }
 
@@ -86,6 +116,12 @@ declare namespace API {
   type BaseResponsePictureVO_ = {
     code?: number
     data?: PictureVO
+    message?: string
+  }
+
+  type BaseResponseSpaceUsageAnalyzeResponse_ = {
+    code?: number
+    data?: SpaceUsageAnalyzeResponse
     message?: string
   }
 
@@ -156,6 +192,42 @@ declare namespace API {
   type getPictureVOByIdUsingPOSTParams = {
     /** id */
     id?: number
+  }
+
+  type getSpaceCategoryAnalyzeUsingPOSTParams = {
+    queryAll?: boolean
+    queryPublic?: boolean
+    spaceId?: number
+  }
+
+  type getSpaceRankAnalyzeUsingPOSTParams = {
+    topN?: number
+  }
+
+  type getSpaceSizeAnalyzeUsingPOSTParams = {
+    queryAll?: boolean
+    queryPublic?: boolean
+    spaceId?: number
+  }
+
+  type getSpaceTagAnalyzeUsingPOSTParams = {
+    queryAll?: boolean
+    queryPublic?: boolean
+    spaceId?: number
+  }
+
+  type getSpaceUsageAnalyzeUsingPOSTParams = {
+    queryAll?: boolean
+    queryPublic?: boolean
+    spaceId?: number
+  }
+
+  type getSpaceUserAnalyzeUsingPOSTParams = {
+    queryAll?: boolean
+    queryPublic?: boolean
+    spaceId?: number
+    timeDimension?: string
+    userId?: number
   }
 
   type getSpaceVOByIdUsingGETParams = {
@@ -380,9 +452,31 @@ declare namespace API {
     url?: string
   }
 
+  type Space = {
+    createTime?: string
+    editTime?: string
+    id?: number
+    isDelete?: number
+    maxCount?: number
+    maxSize?: number
+    spaceLevel?: number
+    spaceName?: string
+    spaceType?: number
+    totalCount?: number
+    totalSize?: number
+    updateTime?: string
+    userId?: number
+  }
+
   type SpaceAddRequest = {
     spaceLevel?: number
     spaceName?: string
+  }
+
+  type SpaceCategoryAnalyzeResponse = {
+    category?: string
+    count?: number
+    totalSize?: number
   }
 
   type SpaceEditRequest = {
@@ -408,12 +502,36 @@ declare namespace API {
     userId?: number
   }
 
+  type SpaceSizeAnalyzeResponse = {
+    count?: number
+    sizeRange?: string
+  }
+
+  type SpaceTagAnalyzeAResponse = {
+    count?: number
+    tag?: string
+  }
+
   type SpaceUpdateRequest = {
     id?: number
     maxCount?: number
     maxSize?: number
     spaceLevel?: number
     spaceName?: string
+  }
+
+  type SpaceUsageAnalyzeResponse = {
+    countusageRatio?: number
+    maxCount?: number
+    maxSize?: number
+    sizeusageRatio?: number
+    usedCount?: number
+    usedSize?: number
+  }
+
+  type SpaceUserAnalyzeResponse = {
+    count?: number
+    period?: string
   }
 
   type SpaceVO = {
