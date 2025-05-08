@@ -1,12 +1,10 @@
 package com.caden.picturebackend.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.caden.picturebackend.model.dto.space.analyze.SpaceCategoryAnalyzeRequest;
-import com.caden.picturebackend.model.dto.space.analyze.SpaceUsageAnalyzeRequest;
+import com.caden.picturebackend.model.dto.space.analyze.*;
 import com.caden.picturebackend.model.entity.Space;
 import com.caden.picturebackend.model.vo.LoginUserVO;
-import com.caden.picturebackend.model.vo.analyze.SpaceCategoryAnalyzeResponse;
-import com.caden.picturebackend.model.vo.analyze.SpaceUsageAnalyzeResponse;
+import com.caden.picturebackend.model.vo.analyze.*;
 
 import java.util.List;
 
@@ -32,4 +30,35 @@ public interface SpoaceAnalyzeService extends IService<Space> {
      * @return
      */
     List<SpaceCategoryAnalyzeResponse> getSpaceCategoryAnalyze(SpaceCategoryAnalyzeRequest spaceCategoryAnalyzeRequest, LoginUserVO loginUserVO);
+    /**
+     * 获取空间标签情况分析
+     * @param spaceTagAnalyzeRequest
+     * @param loginUserVO
+     * @return
+     */
+    List<SpaceTagAnalyzeAResponse> getSpaceTagAnalyze(SpaceTagAnalyzeRequest spaceTagAnalyzeRequest, LoginUserVO loginUserVO);
+
+    /**
+     * 获取空间图片大小情况分析
+     * @param spaceSizeAnalyzeRequest
+     * @param loginUserVO
+     * @return
+     */
+    List<SpaceSizeAnalyzeResponse> getSpaceSizeAnalyze(SpaceSizeAnalyzeRequest spaceSizeAnalyzeRequest, LoginUserVO loginUserVO);
+
+    /**
+     * 获取用户上传情况分析
+     * @param spaceUserAnalyzeRequest
+     * @param loginUserVO
+     * @return
+     */
+    List<SpaceUserAnalyzeResponse> getSpaceUserAnalyze(SpaceUserAnalyzeRequest spaceUserAnalyzeRequest, LoginUserVO loginUserVO);
+
+    /**
+     * 获取空间使用情况排行
+     * @param spaceRankAnalyzeRequest
+     * @param loginUserVO
+     * @return
+     */
+    List<Space>  getSpaceRankAnalyze(SpaceRankAnalyzeRequest spaceRankAnalyzeRequest, LoginUserVO loginUserVO);
 }
